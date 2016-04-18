@@ -1,5 +1,6 @@
 """ Simple weather data from weathermap API. """
 from __future__ import print_function
+from pprint import pprint
 import requests
 from ConfigParser import ConfigParser
 
@@ -20,5 +21,5 @@ def get_config():
 
 config = get_config()
 
-print(upcoming_forecast(
+pprint(upcoming_forecast(
     config.get('openweather', 'api_key'), 52.520645, 13.409779))
