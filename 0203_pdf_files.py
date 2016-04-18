@@ -7,6 +7,7 @@ table = pdftables.page_to_tables(chart_page)
 
 
 titles = zip(table[0][0], table[0][1])[:5]
+titles = [''.join([title[0], title[1]]) for title in titles]
 print(titles)
 
 all_rows = []
