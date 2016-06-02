@@ -1,7 +1,11 @@
 """ Simple tweepy stream listener for twitter API. """
 from __future__ import print_function
 import tweepy
-from ConfigParser import ConfigParser
+
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser
 
 class PythonListener(tweepy.StreamListener):
     """ Very simple tweepy stream listener. """

@@ -2,8 +2,15 @@ from __future__ import unicode_literals, print_function
 
 import requests
 from multiprocessing import Pool
-from ConfigParser import ConfigParser
-from urllib import quote_plus
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser
+try:
+    from urllib.parse import quote_plus
+except ImportError:
+    from urllib import quote_plus
+
 import logging
 
 

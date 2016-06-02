@@ -2,8 +2,11 @@
 from __future__ import print_function
 from pprint import pprint
 import requests
-from ConfigParser import ConfigParser
 
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser
 
 def upcoming_forecast(api_key, lat, lon):
     """ Pulls upcoming forecast based on latitude and longitude. """
