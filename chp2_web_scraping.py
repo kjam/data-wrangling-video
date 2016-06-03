@@ -3,17 +3,20 @@ import requests
 from lxml import html
 
 
-response = requests.get('http://www.kdnuggets.com/news/top-stories.html')
+response = requests.get('http://kjamistan.com')
 
 page = html.fromstring(response.content)
 
-#top_stories = page.xpath('//div[contains(@class, "post")]/ol/li')
-top_stories = page.cssselect('div ol li')
+page.make_links_absolute(base_url='http://kjamistan.com')
 
-story_list = []
+posts = page.xpath('//article[@class="post"]')
+#posts = page.cssselect('article.post')
 
-for story in top_stories:
-    link = story.xpath('a')[0].get('href')
-    story_list.append((story.text_content(), link))
+all_posts = []
 
-print(story_list)
+for post in posts:
+    link = post.xpath('header/h2/a')[0].get('href')
+    title = post.xpath('header/h2/a/text()')[0]
+    all_posts.append((title, link))
+
+print(all_posts)
